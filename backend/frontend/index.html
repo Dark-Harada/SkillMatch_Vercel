@@ -79,7 +79,7 @@ h1 {
 
 .login {
     background: transparent;
-    border: 1px solid #5a5afc;
+    border: 1px solid #ff0000;
     color: #5a5afc;
 }
 
@@ -197,7 +197,7 @@ h1 {
     </div>
 </div>
 
-<!-- LOGIN -->
+
 <div class="modal-bg" id="loginModal">
     <div class="modal">
         <h2>Login</h2>
@@ -208,7 +208,7 @@ h1 {
     </div>
 </div>
 
-<!-- CADASTRO -->
+
 <div class="modal-bg" id="cadastroModal">
     <div class="modal">
         <h2>Criar Conta</h2>
@@ -241,11 +241,10 @@ h1 {
     </div>
 </div>
 
-<!-- 🎬 VIDEO MODAL -->
+
 <div class="modal-bg" id="videoModal" style="display: flex;">
     <div class="modal" style="width: 80%; max-width: 900px; padding: 20px; position: relative;">
 
-        <!-- BOTÃO PULAR (AGORA MAIS ACIMA E FORA DO VÍDEO) -->
         <button onclick="fecharVideo()" 
         style="
             position: fixed;
@@ -263,7 +262,7 @@ h1 {
             Pular
         </button>
 
-        <!-- VIDEO COM CONTROLES NATIVOS -->
+
         <video id="introVideo" autoplay controls style="width: 100%; border-radius: 12px;">
             <source src="/static/Editado.mp4" type="video/mp4">
         </video>
@@ -308,10 +307,10 @@ function fecharVideo() {
     const video = document.getElementById("introVideo")
 
     if (video) {
-        video.pause()                // para o vídeo
-        video.currentTime = 0        // volta pro início
-        video.src = ""               // REMOVE o source (isso mata o áudio 100%)
-        video.load()                 // força reset do player
+        video.pause()
+        video.currentTime = 0
+        video.src = ""
+        video.load()
     }
 
     modal.style.display = "none"
