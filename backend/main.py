@@ -30,25 +30,20 @@ def home():
     with open(os.path.join(BASE_DIR, "frontend", "index.html"), encoding="utf-8") as f:
         return f.read()
 
-
 @app.post("/login")
 def login(data: dict):
     user = players_collection.find_one({
         "name": data["name"],
         "password": data["password"]
     })
-
     if not user:
         return {"error": "Login inválido"}
-
     return {"message": "Login sucesso"}
-
 
 @app.post("/players")
 def create_player(player: dict):
     players_collection.insert_one(player)
     return {"message": "Player criado"}
-
 
 @app.get("/matchmaking/{player_name}")
 def matchmaking(player_name: str):
@@ -62,13 +57,11 @@ def matchmaking(player_name: str):
     user_rank_index = rank_order.index(user["rank"])
 
     def buscar_por_role(role, quantidade):
-
         encontrados = []
         offsets = [0, 1, -1, 2, -2, 3, -3]
 
         for offset in offsets:
             idx = user_rank_index + offset
-
             if idx < 0 or idx >= len(rank_order):
                 continue
 
@@ -105,7 +98,6 @@ def matchmaking(player_name: str):
 
     for role, qtd in roles_needed.items():
         encontrados = buscar_por_role(role, qtd)
-
         for p in encontrados:
             team.append({
                 "name": p["name"],
